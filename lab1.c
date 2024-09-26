@@ -29,5 +29,24 @@ char* readString(char* fileName){
  * 
  */
 char* mysteryExplode(const char* str){
-    //TODO: Replace this line with your code
+    if (str == NULL) {
+        return NULL;
+    }
+
+    int length = strlen(str);
+    int new_len = length * (length + 1) / 2;
+    char* res = (char*)malloc((new_len + 1) * sizeof(char));
+    if (res == NULL) {
+        return NULL;
+    }
+
+    int index = 0;
+    for (int i = 0; i < length; i++) {
+        for (int j = 0; j <= i; j++) {
+            res[index++] = str[j];
+        }
+    }
+
+    res[new_len] = '\0';
+    return res;
 }
